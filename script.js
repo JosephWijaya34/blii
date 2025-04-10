@@ -20,17 +20,33 @@ const displayItems = (item, index, active) => {
   item.style.setProperty('--active', (index - active) / $items.length);
 };
 
+// const animate = () => {
+//   progress = Math.max(0, Math.min(progress, 100));
+//   active = Math.floor((progress / 100) * ($items.length - 1));
+//   $items.forEach((item, index) => displayItems(item, index, active));
+
+//   if (active === $items.length - 1) {
+//     document.body.classList.remove("no-scroll");
+//     setTimeout(() => {
+//       guideSection.scrollIntoView({ behavior: "smooth" });
+//     }, 600);
+//   } else {
+//     document.body.classList.add("no-scroll");
+//   }
+// };
+const navButtons = document.querySelector('.nav-buttons');
+
 const animate = () => {
   progress = Math.max(0, Math.min(progress, 100));
   active = Math.floor((progress / 100) * ($items.length - 1));
   $items.forEach((item, index) => displayItems(item, index, active));
 
   if (active === $items.length - 1) {
+    // Hide nav buttons di slide 10
+    navButtons.style.display = 'none';
     document.body.classList.remove("no-scroll");
-    setTimeout(() => {
-      guideSection.scrollIntoView({ behavior: "smooth" });
-    }, 600);
   } else {
+    navButtons.style.display = 'flex';
     document.body.classList.add("no-scroll");
   }
 };

@@ -29,6 +29,23 @@ body.no-scroll {
   --rot: calc(var(--active) * 120deg);
   --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
 
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff4e5;
+  border-radius: 0;
+  overflow: hidden;
+  transform: translateX(var(--x)) rotate(var(--rot));
+  z-index: var(--zIndex);
+  transition: transform 0.8s ease;
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,8 +84,8 @@ body.no-scroll {
 }
 
 .nav-buttons {
-  position: absolute;
-  bottom: 24px;
+  position: fixed;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
@@ -108,16 +125,26 @@ body.no-scroll {
 }
 
 .guide-book {
-  padding: 60px 30px;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #fffaf6;
   color: #5e3b2b;
   text-align: center;
+  padding: 60px 30px;
 }
 
 .guide-book h2 {
   font-size: 32px;
   margin-bottom: 16px;
   color: #b58e6f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .guide-steps {
