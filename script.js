@@ -1,95 +1,87 @@
-let progress = 0;
-let startX = 0;
-let active = 0;
-let isDown = false;
+// ======================
+// Section 1: Carousel Intro with Typing Animation
+// ======================
 
-const speedWheel = 0.02;
-const speedDrag = -0.1;
+const slides = document.querySelectorAll(".carousel-slide");
+const texts = document.querySelectorAll(".carousel-slide .text");
+let currentSlide = 0;
+let isTyping = false; // untuk mencegah klik saat animasi belum selesai
 
-const $items = document.querySelectorAll('.carousel-item');
-const guideSection = document.getElementById("guideBook");
-
-const getZindex = (array, index) =>
-  array.map((_, i) =>
-    index === i ? array.length : array.length - Math.abs(index - i)
-  );
-
-const displayItems = (item, index, active) => {
-  const zIndex = getZindex([...$items], active)[index];
-  item.style.setProperty('--zIndex', zIndex);
-  item.style.setProperty('--active', (index - active) / $items.length);
-};
-
-// const animate = () => {
-//   progress = Math.max(0, Math.min(progress, 100));
-//   active = Math.floor((progress / 100) * ($items.length - 1));
-//   $items.forEach((item, index) => displayItems(item, index, active));
-
-//   if (active === $items.length - 1) {
-//     document.body.classList.remove("no-scroll");
-//     setTimeout(() => {
-//       guideSection.scrollIntoView({ behavior: "smooth" });
-//     }, 600);
-//   } else {
-//     document.body.classList.add("no-scroll");
-//   }
-// };
-const navButtons = document.querySelector('.nav-buttons');
-
-const animate = () => {
-  progress = Math.max(0, Math.min(progress, 100));
-  active = Math.floor((progress / 100) * ($items.length - 1));
-  $items.forEach((item, index) => displayItems(item, index, active));
-
-  if (active === $items.length - 1) {
-    // Hide nav buttons di slide 10
-    navButtons.style.display = 'none';
-    document.body.classList.remove("no-scroll");
-  } else {
-    navButtons.style.display = 'flex';
-    document.body.classList.add("no-scroll");
-  }
-};
-
-animate();
-
-$items.forEach((item, i) => {
-  item.addEventListener('click', () => {
-    progress = (i / $items.length) * 100;
-    animate();
+// Fungsi menampilkan slide dan mengetikkan teks
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
   });
-});
 
-document.addEventListener('mousewheel', (e) => {
-  progress += e.deltaY * speedWheel;
-  animate();
-});
+  // Reset semua text element width ke 0
+  const textEl = texts[index];
+  const fullText = textEl.dataset.text;
+  textEl.textContent = ""; // kosongkan teks
+  textEl.style.width = "0";
+  textEl.classList.remove("typing");
 
-document.addEventListener('mousedown', (e) => {
-  isDown = true;
-  startX = e.clientX;
-});
+  let charIndex = 0;
+  isTyping = true;
 
-document.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  const x = e.clientX;
-  progress += (x - startX) * speedDrag;
-  startX = x;
-  animate();
-});
-
-document.addEventListener('mouseup', () => isDown = false);
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-  progress += 100 / ($items.length - 1);
-  animate();
-});
-
-document.getElementById('prevBtn').addEventListener('click', () => {
-  progress -= 100 / ($items.length - 1);
-  animate();
-});
-
-function goToGuide() {
-  document.getElementById("guideBook").scrollIntoView({ behavior: "smooth" });
+  const typingInterval = setInterval(() => {
+    textEl.textContent += fullText[charIndex];
+    charIndex++;
+    if (charIndex === fullText.length) {
+      clearInterval(typingInterval);
+      isTyping = false; // typing selesai
+    }
+  }, 30);
 }
+
+// Tombol "Lanjut 🚀" ke section berikut
+document.getElementById("toStrengthBtn").addEventListener("click", () => {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("strengths").classList.remove("hidden");
+});
+
+// Klik layar untuk pindah ke slide berikutnya (kalau typing udah selesai)
+document.addEventListener("click", () => {
+  if (!isTyping && currentSlide < slides.length - 1) {
+    currentSlide++;
+    showSlide(currentSlide);
+  }
+});
+
+// Mulai dari slide pertama
+showSlide(currentSlide);
+
+
+// ========================
+// Section 2: Kelebihannya
+// ========================
+document.getElementById("toJourneyBtn").addEventListener("click", () => {
+  document.getElementById("strengths").classList.add("hidden");
+  document.getElementById("journey").classList.remove("hidden");
+});
+
+
+// ======================
+// Section 3: Petunjuk / Journey
+// ======================
+const slideImgs = document.querySelectorAll(".slide");
+let currentImg = 0;
+
+// Fungsi untuk menampilkan gambar aktif
+function showImage(index) {
+  slideImgs.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  // Jika sudah di slide terakhir, sembunyikan tombol
+  if (index === slideImgs.length - 1) {
+    document.getElementById("nextSlide").style.display = "none";
+  }
+}
+
+// Event untuk tombol 'next'
+document.getElementById("nextSlide").addEventListener("click", () => {
+  if (currentImg < slideImgs.length - 1) {
+    currentImg++;
+    showImage(currentImg);
+  }
+});

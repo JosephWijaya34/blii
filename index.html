@@ -3,99 +3,56 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>For Blii 🎂</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Blii</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="no-scroll">
-  <div class="carousel"> 
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 1</div>
-        <div class="text">Halooo blii 👋<br>(jangan swipe dulu, baca ya wkwk)</div>
+<body>
+  <!-- Section 1: Intro Carousel -->
+  <section id="intro" class="section">
+    <div class="carousel">
+      <div class="carousel-slide active"><span class="text"
+          data-text="Halooo bliii 👋 (jangan di klik cepet cepett, dibaca dulu yaaaa wkwk)"></span></div>
+      <div class="carousel-slide"><span class="text"
+          data-text="Jadi website ini dibuat bukan pake AI (tapi juga gak full manual 😆)"></span></div>
+      <div class="carousel-slide"><span class="text" data-text="Aku kepikiran iseng bikin ini buat kamuuu 🛠️"></span>
+      </div>
+      <div class="carousel-slide"><span class="text"
+          data-text="Tapi juga nggak iseng-iseng banget sih... (sedikit serius 😳)"></span></div>
+      <div class="carousel-slide"><span class="text" data-text="Nggak ada kata ulang tahun di sini ya 😏"></span></div>
+      <div class="carousel-slide"><span class="text" data-text="Tapi ini bagian dari misi spesial 🎮"></span></div>
+      <div class="carousel-slide">
+        <span class="text" data-text="Siap lanjut?"></span><br />
+        <button id="toStrengthBtn">Lanjut 🚀</button>
       </div>
     </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 2</div>
-        <div class="text">Website ini dibuat bukan pake AI (tapi juga gak full manual 😆)</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 3</div>
-        <div class="text">Jadi, ceritanya aku kepikiran iseng bikin ini buat kamu 🛠️</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 4</div>
-        <div class="text">Tapi juga nggak iseng-iseng banget sih... (sedikit serius 😳)</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 5</div>
-        <div class="text">Karena kamu tuh lucu...<br>(kayak kucing tapi versi manusia 🐱)</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 6</div>
-        <div class="text">Kadang bikin kesel juga, tapi lucunya menang 😤❤️</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 7</div>
-        <div class="text">Anyway... ulang tahun kamu bentar lagi kan? 👀🎉</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 8</div>
-        <div class="text">Tenang aja, surprise-nya nggak di sini kok 😏</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 9</div>
-        <div class="text">Tapi ini bagian dari misi spesialku buat kamu 🎮</div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-box">
-        <div class="title">Slide 10</div>
-        <div class="text">Sekarang lanjut ke bagian "guide book"-nya ya 📘<br><br><button class="next-section-btn"
-            onclick="goToGuide()">Lanjutkan Perjalanan 🚀</button></div>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <!-- Navigasi -->
-  <div class="nav-buttons">
-    <button id="prevBtn">⬅ Prev</button>
-    <button id="nextBtn">Next ➡</button>
-  </div>
+  <!-- Section 2: Kelebihannya -->
+  <section id="strengths" class="section hidden">
+    <h2>✨ Fun Facts About You</h2>
+    <ul class="strength-list">
+      <li>Pintarnya gak kaleng-kaleng 🧠</li>
+      <li>Tawa kamu tuh mood booster!</li>
+      <li>Suka bantuin orang tanpa banyak omong</li>
+      <li>Gayanya khas, tapi gak norak 😎</li>
+      <li>Lucu + nyebelin = kombo terbaik 😆</li>
+    </ul>
+    <button id="toJourneyBtn">Lanjut ke Petunjuk 🗺️</button>
+  </section>
 
-  <!-- Guide Book Section -->
-  <section id="guideBook" class="guide-book">
-    <h2>📘 Guide Book</h2>
-    <p>This is your special adventure, blii ✨</p>
-    <div class="guide-steps">
-      <div class="step">
-        <h3>🪄 Step 1</h3>
-        <p>Baca semua slide-nya sampai akhir (check ✅)</p>
-      </div>
-      <div class="step">
-        <h3>🎁 Step 2</h3>
-        <p>Buka hadiah yang akan dikirim (segera)</p>
-      </div>
-      <div class="step">
-        <h3>🎂 Step 3</h3>
-        <p>Rayain ultah kamu dengan senyum 🥹</p>
-      </div>
+  <!-- Section 3: Journey Guide -->
+  <section id="journey" class="section hidden">
+    <h2>📍 Petunjuk Rahasia</h2>
+    <div class="slideshow">
+      <div class="slide active"><img src="img/lift.jpg" alt="Mulai dari sini"></div>
+      <div class="slide"><img src="img/hallway.jpg" alt="Terus lurus..."></div>
+      <div class="slide"><img src="img/door.jpg" alt="Belok kanan..."></div>
+      <div class="slide"><img src="img/place.jpg" alt="Tadaa 🎁"></div>
+    </div>
+    <div class="slideshow-controls">
+      <button id="nextSlide">Lanjut ➡</button>
     </div>
   </section>
 
