@@ -108,6 +108,7 @@ document.getElementById("nextSlide").addEventListener("click", () => {
 // ======================
 
 const bgMusic = document.getElementById("bgMusic");
+const clicker = document.getElementById("clicker");
 
 function enableMusic() {
   bgMusic.play().catch(e => {
@@ -118,5 +119,5 @@ function enableMusic() {
   document.removeEventListener("touchstart", enableMusic);
 }
 
-document.addEventListener("click", enableMusic);
-document.addEventListener("touchstart", enableMusic);
+clicker.addEventListener("click", enableMusic);
+clicker.addEventListener("touchstart", enableMusic);
