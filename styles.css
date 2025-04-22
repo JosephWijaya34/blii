@@ -13,6 +13,25 @@ body {
   transition: background 0.5s ease;
 }
 
+/* Fade & slide in  for section 2*/
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.strength-list li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s ease forwards;
+  animation-delay: var(--delay);
+}
+
 /* General Section Style */
 .section {
   min-height: 100vh;

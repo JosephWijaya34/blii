@@ -59,6 +59,22 @@ document.getElementById("toJourneyBtn").addEventListener("click", () => {
   document.getElementById("journey").classList.remove("hidden");
 });
 
+// ====== Animate Fun Facts When Section 2 Shows ======
+const strengthSection = document.getElementById("strengths");
+const funFacts = document.querySelectorAll(".strength-list li");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      funFacts.forEach((item, index) => {
+        item.style.setProperty('--delay', `${index * 0.2}s`);
+      });
+      observer.unobserve(entry.target); // Stop after trigger once
+    }
+  });
+}, { threshold: 0.5 });
+
+observer.observe(strengthSection);
 
 // ======================
 // Section 3: Petunjuk / Journey
@@ -85,3 +101,22 @@ document.getElementById("nextSlide").addEventListener("click", () => {
     showImage(currentImg);
   }
 });
+
+
+// ======================
+// Background Music Autoplay setelah interaksi pertama
+// ======================
+
+const bgMusic = document.getElementById("bgMusic");
+
+function enableMusic() {
+  bgMusic.play().catch(e => {
+    console.warn("Autoplay blocked:", e);
+  });
+
+  document.removeEventListener("click", enableMusic);
+  document.removeEventListener("touchstart", enableMusic);
+}
+
+document.addEventListener("click", enableMusic);
+document.addEventListener("touchstart", enableMusic);
